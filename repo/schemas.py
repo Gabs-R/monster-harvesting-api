@@ -28,10 +28,17 @@ class Weapon(WeaponBase):
     class Config:
         from_attributes = True
 
+class CharacterCreateRequest(BaseModel):
+    name: str
+    class_name: ClassType
+    world_system: str
+    language: str = "en"
+
 class CharacterBase(BaseModel):
     name: str
     class_name: ClassType
     world_system: str
+    language: str = "en"
     level: int = 1
     xp: int = 0
     max_hp: int
@@ -85,5 +92,29 @@ class MonsterBase(BaseModel):
 
 class Monster(MonsterBase):
     id: int
+    class Config:
+        from_attributes = True
+
+class StoryStateBase(BaseModel):
+    current_arc: str
+    location: str
+    objective: str
+    checkpoint_summary: str
+    checkpoint_index: int
+
+class StoryState(StoryStateBase):
+    id: int
+    character_id: int
+    class Config:
+        from_attributes = True
+
+class StoryEventBase(BaseModel):
+    event_type: str
+    description: str
+    is_major: bool
+
+class StoryEvent(StoryEventBase):
+    id: int
+    character_id: int
     class Config:
         from_attributes = True

@@ -1,6 +1,8 @@
 fastapi
 uvicorn
 sqlalchemy
+alembic
 pydantic
 discord.py
 python-dotenv
+requests

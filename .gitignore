@@ -1,0 +1,25 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+
+# OS Files
+.DS_Store
+
+# Test files or scratchpad
+test.py
+text.txt
+
+# AI Agent & Plans
+.agent/
+PLAN-persistent-story.md

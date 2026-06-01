@@ -2,8 +2,9 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
-# Use SQLite for simple setup & local testing, easy to swap to PostgreSQL later via env URL
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./monster_rpg.db")
+# Use SQLite for simple setup & local testing. Enforce absolute path to avoid empty DB accidents!
+DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "monster_rpg.db")
+DATABASE_URL = os.getenv("DATABASE_URL", f"sqlite:///{DB_PATH}")
 
 engine = create_engine(
     DATABASE_URL, 
